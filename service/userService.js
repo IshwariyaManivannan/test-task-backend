@@ -24,14 +24,16 @@ exports.userSignup=(username,email,password)=>{
 exports.login=(email,password)=>{
     return new Promise ((resolve,reject)=>{
         db.connect.query(queries.login,[email],(err,result)=>{
-         
-            if(err){
-                reject({statusCode:403})
-            }
+
+
+             console.log(result,"result")
+          
             if(result[0]===undefined){
+                console.log("this");
                 reject({statusCode:403})
             }
-            if(result[0].password!==password){
+          
+             else if(result[0].password!==password){
                reject({statusCode:403})
             }
             else{
