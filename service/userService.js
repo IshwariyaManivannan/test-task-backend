@@ -82,7 +82,7 @@ exports.update = (name, age, gender, dob, mobile, loginId) => {
     })
 }
 
-exports.insert = (id, name, age, gender, dob, mobile) => {
+exports.insert = ( name, age, gender, dob, mobile,id) => {
     return new Promise((resolve, reject) => {
         db.connect.query(queries.insert, [name, age, gender, dob, mobile, id], (err, result) => {
             if (err) {

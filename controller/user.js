@@ -27,7 +27,7 @@ exports.login=async(req,res)=>{
 
 exports.fetch=async(req,res)=>{
     try{
-        const id=req.body.id
+        const id=req.params.id
         const get=await userService.fetchData(id)
         res.send({"status":get.statusCode,"data":get.data})
      }
@@ -60,7 +60,7 @@ exports.insert=async(req,res)=>{
         const dob=req.body.dob
         const mobile=req.body.mobile
         const loginId=req.body.id
-        const insert=await userService.insert(id,name,age,gender,dob,mobile,loginId)
+        const insert=await userService.insert(name,age,gender,dob,mobile,loginId)
         res.send({"status":insert.statusCode,"data":insert.data})
      }
      catch(e){
