@@ -1,0 +1,6 @@
+{
+    "signup":"INSERT INTO userlogin (username,email,password) VALUES (?,?,?)",
+    "login":"SELECT * FROM userlogin WHERE email=?",
+    "get":"SELECT * FROM profile WHERE loginId=?",
+    "update":"UPDATE profile SET name=?,age=?,gender=?,dob=?,mobile=? WHERE loginId=?"
+}
