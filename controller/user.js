@@ -25,7 +25,7 @@ exports.login=async(req,res)=>{
      }
 }
 
-exports.fetch=async()=>{
+exports.fetch=async(req,res)=>{
     try{
         const id=req.body.id
         const get=await userService.fetchData(id)
@@ -36,7 +36,7 @@ exports.fetch=async()=>{
      }
 }
 
-exports.update=async()=>{
+exports.update=async(req,res)=>{
     try{
         const id=req.body.id
         const name=req.body.name
@@ -44,8 +44,24 @@ exports.update=async()=>{
         const gender=req.body.gender
         const dob=req.body.dob
         const mobile=req.body.mobile
-        const update=await userService.update(id,name,age,gender,dob,mobile)
+        const update=await userService.update(name,age,gender,dob,mobile,id)
         res.send({"status":update.statusCode,"data":update.data})
+     }
+     catch(e){
+        throw(e)
+     }
+}
+exports.insert=async(req,res)=>{
+    try{
+        
+        const name=req.body.name
+        const age=req.body.age
+        const gender=req.body.gender
+        const dob=req.body.dob
+        const mobile=req.body.mobile
+        const loginId=req.body.id
+        const insert=await userService.insert(id,name,age,gender,dob,mobile,loginId)
+        res.send({"status":insert.statusCode,"data":insert.data})
      }
      catch(e){
         throw(e)

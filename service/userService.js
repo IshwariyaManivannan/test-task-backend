@@ -2,82 +2,101 @@ const db = require("../database/connection.js");
 const queries = require("../database/queries.json");
 
 
-exports.userSignup=(username,email,password)=>{
-    return new Promise ((resolve,reject)=>{
-        db.connect.query(queries.signup,[username,email,password],(err,result)=>{
-            if(err){
+exports.userSignup = (username, email, password) => {
+    return new Promise((resolve, reject) => {
+        db.connect.query(queries.signup, [username, email, password], (err, result) => {
+            if (err) {
                 console.log(err);
-                reject({statusCode:403})
+                reject({ statusCode: 403 })
             }
-            else{
-                resolve({ statusCode:200 ,data:result})
+            else {
+                resolve({ statusCode: 200, data: result })
             }
         })
-    }).then((data)=>{
-          return {statusCode:data.statusCode,data:data.data}
-    }).catch((err)=>{
-        return {statusCode:err.statusCode}
+    }).then((data) => {
+        return { statusCode: data.statusCode, data: data.data }
+    }).catch((err) => {
+        return { statusCode: err.statusCode }
     })
 }
 
 
-exports.login=(email,password)=>{
-    return new Promise ((resolve,reject)=>{
-        db.connect.query(queries.login,[email],(err,result)=>{
+exports.login = (email, password) => {
+    return new Promise((resolve, reject) => {
+        db.connect.query(queries.login, [email], (err, result) => {
 
 
-             console.log(result,"result")
-          
-            if(result[0]===undefined){
+            console.log(result, "result")
+
+            if (result[0] === undefined) {
                 console.log("this");
-                reject({statusCode:403})
+                reject({ statusCode: 403 })
             }
-          
-             else if(result[0].password!==password){
-               reject({statusCode:403})
+
+            else if (result[0].password !== password) {
+                reject({ statusCode: 403 })
             }
-            else{
-                resolve({ statusCode:200 ,data:result})
+            else {
+                resolve({ statusCode: 200, data: result })
             }
         })
-    }).then((data)=>{
-          return {statusCode:data.statusCode,data:data.data}
-    }).catch((err)=>{
-        return {statusCode:err.statusCode}
+    }).then((data) => {
+        return { statusCode: data.statusCode, data: data.data }
+    }).catch((err) => {
+        return { statusCode: err.statusCode }
     })
 }
 
-exports.fetchData=(id)=>{
-    return new Promise ((resolve,reject)=>{
-        db.connect.query(queries.get,[id],(err,result)=>{
-            if(err){
-                reject({statusCode:403})
+exports.fetchData = (id) => {
+    return new Promise((resolve, reject) => {
+        db.connect.query(queries.get, [id], (err, result) => {
+            if (err) {
+                reject({ statusCode: 403 })
             }
-            else{
-                resolve({ statusCode:200 ,data:result})
+            else {
+                resolve({ statusCode: 200, data: result })
             }
         })
-    }).then((data)=>{
-          return {statusCode:data.statusCode,data:data.data}
-    }).catch((err)=>{
-        return {statusCode:err.statusCode}
+    }).then((data) => {
+        return { statusCode: data.statusCode, data: data.data }
+    }).catch((err) => {
+        return { statusCode: err.statusCode }
     })
 }
 
-exports.update=(id,name,age,gender,dob,mobile)=>{
-    return new Promise ((resolve,reject)=>{
-        db.connect.query(queries.update,[name,age,gender,dob,mobile,id],(err,result)=>{
-            if(err){
-                reject({statusCode:403})
+exports.update = (name, age, gender, dob, mobile, loginId) => {
+    return new Promise((resolve, reject) => {
+        db.connect.query(queries.update, [name, age, gender, dob, mobile, loginId], (err, result) => {
+            if (err) {
+                console.log(err)
+                reject({ statusCode: 403 })
             }
-            else{
-                resolve({ statusCode:200 ,data:result})
+            else {
+                resolve({ statusCode: 200, data: result })
             }
         })
-    }).then((data)=>{
-          return {statusCode:data.statusCode,data:data.data}
-    }).catch((err)=>{
-        return {statusCode:err.statusCode}
+    }).then((data) => {
+        return { statusCode: data.statusCode, data: data.data }
+    }).catch((err) => {
+        return { statusCode: err.statusCode }
+    })
+}
+
+exports.insert = (id, name, age, gender, dob, mobile) => {
+    return new Promise((resolve, reject) => {
+        db.connect.query(queries.insert, [name, age, gender, dob, mobile, id], (err, result) => {
+            if (err) {
+                console.log(err)
+                reject({ statusCode: 403 })
+            }
+            else {
+                resolve({ statusCode: 200, data: result })
+            }
+        })
+    }).then((data) => {
+        return { statusCode: data.statusCode, data: data.data }
+    }).catch((err) => {
+        return { statusCode: err.statusCode }
     })
 }
 
