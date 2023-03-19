@@ -13,7 +13,7 @@ exports.signup = async(req,res)=>{
     }
 }
 
-exports.login=async()=>{
+exports.login=async(req,res)=>{
     try{
         const password=req.body.password
         const email=req.body.email

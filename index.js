@@ -8,7 +8,7 @@ db.connect.connect((err)=>{if (err) throw err;
 else console.log('db is connected')});
 
 app.use(cors());
-const port = 3000;
+const port = 8000;
 app.use(express.json());
 app.use(bodyParser.json());
 

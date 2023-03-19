@@ -6,6 +6,7 @@ exports.userSignup=(username,email,password)=>{
     return new Promise ((resolve,reject)=>{
         db.connect.query(queries.signup,[username,email,password],(err,result)=>{
             if(err){
+                console.log(err);
                 reject({statusCode:403})
             }
             else{
@@ -22,7 +23,8 @@ exports.userSignup=(username,email,password)=>{
 
 exports.login=(email,password)=>{
     return new Promise ((resolve,reject)=>{
-        db.connect.query(queries.signup,[email],(err,result)=>{
+        db.connect.query(queries.login,[email],(err,result)=>{
+         
             if(err){
                 reject({statusCode:403})
             }
