@@ -6,7 +6,7 @@ const user=require("../controller/user")
 router.post('/signup',user.signup)
 router.post('/login',user.login)
 router.get('/get/:id',user.fetch)   
-router.post('/update',user.update)
-router.post('/insert',user.insert)
+router.post('/update/:id',user.update)
+router.post('/insert/:id',user.insert)
 
 module.exports=router;

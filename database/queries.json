@@ -3,5 +3,5 @@
     "login":"SELECT * FROM userlogin WHERE email=?",
     "get":"SELECT * FROM profile WHERE loginId=?",
     "update":"UPDATE profile SET name=?,age=?,gender=?,dob=?,mobile=? WHERE loginId=?",
-    "insert":"INSERT INTO profile (name,age,gender,dob,mobile,loginId) VALUES (?,?,?,?,?,?)"
+    "insert":"INSERT INTO profile (age,gender,dob,mobile,loginId) VALUES (?,?,?,?,?)"
 }
