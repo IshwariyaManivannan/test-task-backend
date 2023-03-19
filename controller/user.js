@@ -2,7 +2,7 @@ const userService=require("../service/userService.js")
 
 exports.signup = async(req,res)=>{
     try{
-       const username=req.body.email
+       const username=req.body.username
        const password=req.body.password
        const email=req.body.email
        const signup=await userService.userSignup(username,email,password)
