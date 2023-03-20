@@ -64,9 +64,9 @@ exports.fetchData = (id) => {
     })
 }
 
-exports.update = ( age, gender, dob, mobile, loginId) => {
+exports.update = (age, gender, dob, mobile, loginId) => {
     return new Promise((resolve, reject) => {
-        db.connect.query(queries.update, [ age, gender, dob, mobile, loginId], (err, result) => {
+        db.connect.query(queries.update, [age, gender, dob, mobile, loginId], (err, result) => {
             if (err) {
                 console.log(err)
                 reject({ statusCode: 403 })
@@ -82,9 +82,9 @@ exports.update = ( age, gender, dob, mobile, loginId) => {
     })
 }
 
-exports.insert = ( age, gender, dob, mobile,id) => {
+exports.insert = (age, gender, dob, mobile, id) => {
     return new Promise((resolve, reject) => {
-        db.connect.query(queries.insert, [ age, gender, dob, mobile, id], (err, result) => {
+        db.connect.query(queries.insert, [age, gender, dob, mobile, id], (err, result) => {
             if (err) {
                 console.log(err)
                 reject({ statusCode: 403 })
